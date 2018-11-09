@@ -1,24 +1,43 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Rails application, that generates a decision tree based on its actions.
 
-Things you may want to cover:
+Acton format:
+```json
+    {
+      "first_name": "Dmitriy",
+      "last_name": "Ivanov",
+      "language": "Russian"
+    }
+```
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+Decision tree example:
+```json
+    {
+      "key": "last_name",
+      "values": {
+        "Petrov": {
+          "key": "first_name",
+          "values": {
+            "Pyotr": [1]
+          },
+          "default": []
+        },
+        "Ivanov": {
+          "key": "language",
+          "values": {
+            "Russian": {
+              "key": "first_name",
+              "values": {
+                "Ivan": [2],
+                "Dmitriy": [3]
+              },
+              "default": []
+            }
+          },
+          "default": []
+        }
+      },
+      "default": []
+    }
+```
