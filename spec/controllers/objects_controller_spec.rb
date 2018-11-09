@@ -6,7 +6,8 @@ describe Api::V1::ObjectsController, type: :controller do
     it 'Fetches decision tree' do
       get :fetch_tree
 
-      expect(response).to_not have_any_error
+      expect(response.status).to be 200
+      expect(JSON.parse(response.body).deep_symbolize_keys).to eq tree
     end
   end
 end

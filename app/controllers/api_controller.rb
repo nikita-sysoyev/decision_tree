@@ -1,7 +1,7 @@
 class ApiController < ActionController::Base
+  rescue_from StandardError, with: :application_error
   rescue_from ActiveRecord::RecordNotFound, with: :record_not_found
   rescue_from ActiveRecord::RecordInvalid, with: :bad_request
-  rescue_from StandardError, with: :application_error
 
   before_action :set_decision_tree
 

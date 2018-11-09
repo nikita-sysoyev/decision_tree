@@ -20,9 +20,9 @@ class DecisionTreeBuilder
       {
         key: key,
         values: Hash[
-          grouped_values.map { |val| [ val, tree_for_actions(grouped_actions.delete(val), path.push(key)) ] }
+          grouped_values.map { |val| [ val, tree_for_actions(grouped_actions.delete(val), path + [key]) ] }
         ],
-        default: tree_for_actions(default_actions, path.push(key))
+        default: tree_for_actions(default_actions, path + [key])
       }
     else
       actions.pluck(:id)
